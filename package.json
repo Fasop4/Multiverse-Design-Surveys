@@ -1,0 +1,32 @@
+{
+  "name": "multiverse-design-surveys",
+  "version": "0.0.1",
+  "description": "Multiverse design survey project - team 3",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fasop4/Multiverse-Design-Surveys.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "NodeJS",
+    "EJS",
+    "Javascript",
+    "Passport"
+  ],
+  "author": "Mutiverse Design Team (Katherine Bowie, Fabian Soto Palacio, Shahriar Tanvir, Md Mahbub E Waduzzaman, Mohammad Wahiduzzaman, Mokshit)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fasop4/Multiverse-Design-Surveys/issues"
+  },
+  "homepage": "https://github.com/Fasop4/Multiverse-Design-Surveys#readme"
+}
