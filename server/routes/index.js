@@ -6,22 +6,16 @@ let indexController = require('../controllers/index');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('home', { title: 'Welcome survey' });
+    res.render('index', { 
+        title: 'Home' 
+    });
 });
 
 
-
-
-// /* GET Survey page. */
-router.get('/home', function(req, res, next) {
-    res.render('survey-list', { title: 'Current Survey List' });
-});
-
-// /* GET Survey page. */
+/*
+// /* GET Survey page. 
 router.get('/survey', function(req, res, next) {
-    res.render('survey', { title: 'Survey' });
-});
-
-
+    res.render('survey-list', { title: 'Survey' });
+});*/
 
 module.exports = router;

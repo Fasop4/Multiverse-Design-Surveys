@@ -48,14 +48,14 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 
 //setup express session
-app.use(session({
+/*app.use(session({
     secret: "SomeSecret",
     saveUninitialized: false,
     resave: false
 }));
 
 // initialize flash
-app.use(flash());
+app.use(flash());*/ //TODO for later inplementation for user auth.
 
 
 
@@ -64,16 +64,13 @@ let surveyModel = require('../models/survey');
 let Survey = surveyModel.Survey;
 
 //create a User Model Instance
-let userModel = require('../models/user');
-let User = userModel.User;
-
-
-
+/*let userModel = require('../models/user');
+let User = userModel.User;*/ //TODO for later implementation of user model
 
 
 app.use('/', indexRouter);
 app.use('/survey-list', surveyRouter);
-app.use('/user', userRouter);
+//app.use('/user', userRouter); //TODO for later implementation of user
 
 
 // catch 404 and forward to error handler
