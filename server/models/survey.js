@@ -1,15 +1,22 @@
+/*
+Author: Multiverse Design
+Date: Nov-12-2021
+FileName : survey.js
+
+*/
+
 let mongoose = require('mongoose');
 
-// create a model class
+//create a model class
 let surveyModel = mongoose.Schema({
-    name: String,
-    author: String,
-    published: String,
+    title: String,
+    subtitle: String,
     description: String,
-    price: Number
-},
-{
-    collectsion: "surveys"
+    enterQuestion1: String,
+    enterQuestion2: String,
+    enterQuestion3: String
+}, {
+    collection: "survey"
 });
 
 module.exports = mongoose.model('Survey', surveyModel);
