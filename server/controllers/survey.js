@@ -39,7 +39,7 @@ module.exports.displayAddPage = (req, res, next) => {
     res.render('index', {
         title: 'Add Survey',
         page: 'survey/survey-add',
-        SurveyList: "",
+        survey: "",
         displayName: req.user ? req.user.displayname : ''
     });
 }
@@ -105,6 +105,8 @@ module.exports.processEditPage = (req, res, next) => {
         "enterQuestion3": req.body.enterQuestion3
     });
 
+    console.log(updatedSurvey);
+
     Survey.updateOne({
         _id: id
     }, updatedSurvey, (err) => {
@@ -121,7 +123,7 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
-    Survey.remove({
+    Survey.deleteOne({
         _id: id
     }, (err) => {
         if (err) {
