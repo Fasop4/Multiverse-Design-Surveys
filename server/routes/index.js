@@ -2,15 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 let indexController = require('../controllers/index');
+const { displayHomePage } = require('../controllers/survey');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { 
+/* GET home page. 
+router.get('/', displayHomePage(req, res, next) => {
+    res.render('home', { 
         title: 'Home' 
-    });
+    })
 });
-
+*/
 
 /*
 // /* GET Survey page. 

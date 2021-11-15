@@ -12,18 +12,20 @@
 
 <body>
   <!-- Nav Bar Section -->
-  <%- include('./partials/header.ejs'); %>
+  <%- include('./content/partials/header.ejs'); %>
+
+  <%- include ('./content/partials/main_nav.ejs') %>
 
     <!-- Nav Bar Section -->
 
     <!-- Main Section -->
     <main>
-      <%- include('./home.ejs'); %>
+      <%- include ('./content/'+ page +'.ejs'); %>
     </main>
     <!-- Main Section -->
 
     <!-- Bottom section -->
-    <%- include('./partials/footer.ejs'); %>
+    <%- include('./content/partials/footer.ejs'); %>
       <!-- Bottom section -->
 
 

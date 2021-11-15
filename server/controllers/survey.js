@@ -14,11 +14,11 @@ let Survey = require('../models/survey');
 
 module.exports.displayHomePage= (req, res, next) => {
 
-    res.render('home', {
+    res.render('index', {
     title: 'Home',
+    page: 'home'
     });
 }
-
 
 module.exports.displaySurveyList = (req, res, next) => {
     Survey.find((err, surveyList) => {
@@ -31,21 +31,24 @@ module.exports.displaySurveyList = (req, res, next) => {
                 console.log(req.user ? req.user.displayname : '');
             } else {
                 console.log("no displayname passed here");
-            }
+            
  
 
-            res.render('survey-list', {
+            res.render('index', {
                 title: 'Survey List',
+                page: 'survey/survey-list',
                 SurveyList: surveyList,
                 displayName: req.user ? req.user.displayname : ''
             });
+         }
         }
     });
 }
 
 module.exports.displayAddPage = (req, res, next) => {
-    res.render('survey-add', {
+    res.render('index', {
         title: 'Add Survey',
+        page: 'survey/survey-add',
         displayName: req.user ? req.user.displayname : ''
     });
 }
@@ -87,8 +90,9 @@ module.exports.displayEditPage = (req, res, next) => {
             //show the edit view
             //TODO need to check res.render('survey-edit', {title: 'Edit Survey', business: businessToEdit, 
             //displayName: req.user ? req.user.displayName : ''})
-            res.render('survey-edit', {
+            res.render('index', {
                 title: 'Edit Survey',
+                page: 'survey/survey-edit',
                 survey: surveyToEdit,
                 displayName: req.user ? req.user.displayname : ''
             });
@@ -140,22 +144,6 @@ module.exports.performDelete = (req, res, next) => {
     });
 }
 
-module.exports.displaySurveyList = (req, res, next) => {
-    Survey.find((err, SurveyList) => {
-        if (err) {
-            return console.error(err);
-        } else {
-
-
-            res.render('survey-list', {
-                title: 'Survey List',
-                SurveyList: SurveyList,
-                displayName: req.user ? req.user.displayname : ''
-            });
-        }
-    })
-
-}
     /*.sort({
         "firstName": 1
     }); // survey list alphabetically sorted */ //TODO for future implementation. Sorting of surveys
