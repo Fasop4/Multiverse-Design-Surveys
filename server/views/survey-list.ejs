@@ -1,3 +1,5 @@
+
+
 <%- include ./partials/header.ejs %>
 
 <%- include ./partials/main_nav.ejs %>
@@ -19,15 +21,15 @@
                     <% if(typeof displayName == 'string' && displayName) { %>
                         <th class="text-center col-2">Title</th>
                         <th class="text-center col-3">Subtitle</th>
-                        <th class="text-center col-5">Description</th>   
-                        <th class="text-center col-5">Edit</th> 
-                        <th class="text-center col-5">Delete</th>      
+                        <th class="text-center col-5">Description</th>  
+                         
+
+                             
                     <% } else { %>
                         <th class="text-center col-2">Title</th>
                         <th class="text-center col-3">Subtitle</th>
                         <th class="text-center col-5">Description</th>
-                        <th class="text-center col-5">Edit</th> 
-                        <th class="text-center col-5">Delete</th>   
+
                        
                     <% } %>
                 </tr>
@@ -40,8 +42,7 @@
                         <td class="text-center col-2"><%= SurveyList[count].title %></td>
                         <td class="text-center col-3"><%= SurveyList[count].subtitle %></td>
                         <td class="text-center col-5"><%= SurveyList[count].description %></td>
-                        <td class="text-center col-5"><%= SurveyList[count].edit %></td>
-                        <td class="text-center col-5"><%= SurveyList[count].delete %></td>
+
                                 
                         <td class="text-center col-1">
                             <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
@@ -59,5 +60,12 @@
     </div>
   </main>
   
+<%- include ./partials/bottom_nav.ejs %>  
 
 <%- include ./partials/footer.ejs %>
+  
+
+
+
+
+
