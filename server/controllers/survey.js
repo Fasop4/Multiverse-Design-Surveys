@@ -20,9 +20,9 @@ module.exports.displaySurveyList = (req, res, next) => {
             //console.log(surveyList);
             //console.log("inside /survey-list");
             if (req.user) {
-                console.log(req.user ? req.user.displayname : '');
+               // console.log(req.user ? req.user.displayname : '');
             } else {
-                console.log("no displayname passed here");
+                //console.log("no displayname passed here");
 
                 res.render('index', {
                     title: 'Survey List',
@@ -45,9 +45,10 @@ module.exports.displayAddPage = (req, res, next) => {
 }
 
 module.exports.processAddPage = (req, res, next) => {
-    console.log('recieved the request....');
-    console.log(req.body.title);
-    console.log(req.body.subtitle);
+    //debugging part
+    //console.log('recieved the request....');
+    //console.log(req.body.title);
+    //console.log(req.body.subtitle);
 
     let newSurvey = Survey({
         "title": req.body.title,

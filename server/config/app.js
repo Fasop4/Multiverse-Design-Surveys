@@ -25,6 +25,7 @@ mongoDB.once('open', () => {
     console.log('Connected to MongoDB...');
 });
 
+//declaration of routers
 let indexRouter = require('../routes/index');
 let surveyRouter = require('../routes/survey');
 //let userRouter = require('../routes/user'); //TODO not needed yet. it is going be implemented later.
@@ -53,17 +54,6 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 // initialize flash
 app.use(flash());*/ //TODO for later inplementation for user auth.
-
-
-
-// create a Survey Model Instance
-let surveyModel = require('../models/survey');
-let Survey = surveyModel.Survey;
-
-//create a User Model Instance
-/*let userModel = require('../models/user');
-let User = userModel.User;*/ //TODO for later implementation of user model
-
 
 app.use('/', indexRouter);
 app.use('/survey-list', surveyRouter);
