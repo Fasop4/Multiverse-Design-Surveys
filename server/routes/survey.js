@@ -12,7 +12,6 @@ let mongoose = require('mongoose');
 
 let surveyController = require('../controllers/survey');
 
-
 /* GET Route for READ Operation */
 router.get('/', surveyController.displaySurveyList);
 

@@ -5,14 +5,11 @@ FileName : app.js
 
 */
 
-
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
-
-
 
 //database setup
 
@@ -28,10 +25,10 @@ mongoDB.once('open', () => {
     console.log('Connected to MongoDB...');
 });
 
+//declaration of routers
 let indexRouter = require('../routes/index');
 let surveyRouter = require('../routes/survey');
-let userRouter = require('../routes/user');
-
+//let userRouter = require('../routes/user'); //TODO not needed yet. it is going be implemented later.
 
 let app = express();
 
@@ -48,32 +45,18 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 
 //setup express session
-app.use(session({
+/*app.use(session({
     secret: "SomeSecret",
     saveUninitialized: false,
     resave: false
 }));
 
 // initialize flash
-app.use(flash());
-
-
-
-// create a Survey Model Instance
-let surveyModel = require('../models/survey');
-let Survey = surveyModel.Survey;
-
-//create a User Model Instance
-let userModel = require('../models/user');
-let User = userModel.User;
-
-
-
-
+app.use(flash());*/ //TODO for later inplementation for user auth.
 
 app.use('/', indexRouter);
 app.use('/survey-list', surveyRouter);
-app.use('/user', userRouter);
+//app.use('/user', userRouter); //TODO for later implementation of user
 
 
 // catch 404 and forward to error handler
