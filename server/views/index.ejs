@@ -1,19 +1,40 @@
-<%- include partials/header.ejs %>
+<!DOCTYPE html>
+<html>
 
-<%- include partials/main_nav.ejs %>
-  
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/content/app.css' />
+  <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+</head>
 
-  <!-- Main Content -->
-  <main class="container">
-    <div class="jumbotron">
-      <h1 class="display-4">Welcome to the <%= title %> page</h1>
-      
-    </div>
-  </main>
-  
-<%- include partials/bottom_nav.ejs %>  
+<body>
+  <!-- Nav Bar Section -->
+  <%- include('./partials/header.ejs'); %>
 
-<%- include partials/footer.ejs %>
+    <!-- Nav Bar Section -->
+
+    <!-- Main Section -->
+    <main>
+      <%- include('./partials/' + page + '.ejs' ); %>
+    </main>
+    <!-- Main Section -->
+
+    <!-- Bottom section -->
+    <%- include('./partials/footer.ejs'); %>
+      <!-- Bottom section -->
+
+
+
+      <!-- Javascript section -->
+      <script src="/scripts/app.js"></script>
+      <script src="/jquery/dist/jquery.min.js"></script>
+      <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
   
 
 
