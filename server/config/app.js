@@ -30,7 +30,7 @@ mongoDB.once('open', () => {
 
 let indexRouter = require('../routes/index');
 let surveyRouter = require('../routes/survey');
-let userRouter = require('../routes/user');
+//let userRouter = require('../routes/user'); //TODO not needed yet. it is going be implemented later.
 
 
 let app = express();
