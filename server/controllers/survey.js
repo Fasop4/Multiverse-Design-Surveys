@@ -12,14 +12,6 @@ let mongoose = require('mongoose');
 // reference to the model
 let Survey = require('../models/survey');
 
-module.exports.displayHomePage= (req, res, next) => {
-
-    res.render('index', {
-    title: 'Home',
-    page: 'home'
-    });
-}
-
 module.exports.displaySurveyList = (req, res, next) => {
     Survey.find((err, surveyList) => {
         if (err) {
@@ -31,16 +23,14 @@ module.exports.displaySurveyList = (req, res, next) => {
                 console.log(req.user ? req.user.displayname : '');
             } else {
                 console.log("no displayname passed here");
-            
- 
 
-            res.render('index', {
-                title: 'Survey List',
-                page: 'survey/survey-list',
-                SurveyList: surveyList,
-                displayName: req.user ? req.user.displayname : ''
-            });
-         }
+                res.render('index', {
+                    title: 'Survey List',
+                    page: 'survey/survey-list',
+                    SurveyList: surveyList,
+                    displayName: req.user ? req.user.displayname : ''
+                });
+            }
         }
     });
 }
@@ -49,6 +39,7 @@ module.exports.displayAddPage = (req, res, next) => {
     res.render('index', {
         title: 'Add Survey',
         page: 'survey/survey-add',
+        SurveyList: "",
         displayName: req.user ? req.user.displayname : ''
     });
 }
@@ -144,6 +135,6 @@ module.exports.performDelete = (req, res, next) => {
     });
 }
 
-    /*.sort({
-        "firstName": 1
-    }); // survey list alphabetically sorted */ //TODO for future implementation. Sorting of surveys
+/*.sort({
+    "firstName": 1
+}); // survey list alphabetically sorted */ //TODO for future implementation. Sorting of surveys
