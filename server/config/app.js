@@ -46,7 +46,7 @@ let userRouter = require('../routes/user'); //TODO complete
 //routing
 app.use('/', indexRouter);
 app.use('/surveys', surveyRouter);
-app.use('/user', userRouter); //TODO for later implementation of user
+app.use('/user', userRouter); //TODO complete
 
 let app = express();
 
