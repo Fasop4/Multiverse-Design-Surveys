@@ -8,6 +8,6 @@ Where to connect from
 
 module.exports = {
     //"URI": "mongodb://localhost/survey"
-    "URI":"mongodb+srv://multiadmin:MakeItSo99@mongodbserver.0vv2y.mongodb.net/surveys?retryWrites=true&w=majority"
-        
+    "URI":"mongodb+srv://multiadmin:MakeItSo99@mongodbserver.0vv2y.mongodb.net/surveys?retryWrites=true&w=majority",
+    "Secret":"MultiV3rs36"    
 }

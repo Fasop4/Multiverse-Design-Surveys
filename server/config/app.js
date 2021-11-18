@@ -1,6 +1,6 @@
 /*
 Author: Multiverse Design
-Date: Nov-11-2021
+Date: Nov-17-2021
 FileName : app.js
 
 */
@@ -10,6 +10,19 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let cors = require('cors');
+
+//Modules for authentication
+let session = require('express-session');
+let pass = require('passport');
+//JWT
+let passportJWT = require('passport-jwt');
+let JWTStrat = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
 
 //database setup
 
@@ -22,13 +35,18 @@ mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', () => {
-    console.log('Connected to MongoDB...');
+    console.log('Connected to MongoDB succesfully');
 });
 
 //declaration of routers
 let indexRouter = require('../routes/index');
 let surveyRouter = require('../routes/survey');
-//let userRouter = require('../routes/user'); //TODO not needed yet. it is going be implemented later.
+let userRouter = require('../routes/user'); //TODO complete
+
+//routing
+app.use('/', indexRouter);
+app.use('/surveys', surveyRouter);
+app.use('/user', userRouter); //TODO for later implementation of user
 
 let app = express();
 
@@ -43,21 +61,41 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../public')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
-
 //setup express session
-/*app.use(session({
-    secret: "SomeSecret",
+app.use(session({
+    secret: "MultiV3rs36",
     saveUninitialized: false,
     resave: false
 }));
 
 // initialize flash
-app.use(flash());*/ //TODO for later inplementation for user auth.
+app.use(flash()); 
 
-app.use('/', indexRouter);
-app.use('/survey-list', surveyRouter);
-//app.use('/user', userRouter); //TODO for later implementation of user
+// initialize passport
+app.use(pass.initialize());
+app.use(pass.session());
 
+// configuration of passport user
+
+// serialize and deserialize the User info
+pass.serializeUser(User.serializeUser());
+pass.deserializeUser(User.deserializeUser());
+
+// verify that the token sent by the user - check if valid
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = DB.secret;
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+  User.findById(jwt_payload.id)
+    .then(user => {
+      return done(null, user);
+    })
+    .catch(err => {
+      return done(err, false);
+    });
+});
+
+passport.use(strategy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

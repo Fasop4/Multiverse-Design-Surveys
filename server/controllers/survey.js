@@ -1,6 +1,6 @@
 /*
 Author: Multiverse Design
-Date: Nov-12-2021
+Date: Nov-17-2021
 FileName : survey.js
 
 */
@@ -26,7 +26,7 @@ module.exports.displaySurveyList = (req, res, next) => {
 
                 res.render('index', {
                     title: 'Survey List',
-                    page: 'survey/survey-list',
+                    page: 'surveys/survey-list',
                     SurveyList: surveyList,
                     displayName: req.user ? req.user.displayname : ''
                 });
@@ -38,7 +38,7 @@ module.exports.displaySurveyList = (req, res, next) => {
 module.exports.displayAddPage = (req, res, next) => {
     res.render('index', {
         title: 'Add Survey',
-        page: 'survey/survey-add',
+        page: 'surveys/survey-add',
         survey: "",
         displayName: req.user ? req.user.displayname : ''
     });
@@ -64,7 +64,7 @@ module.exports.processAddPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            // refresh the list
+            // refresh the survey list page
             res.redirect('/survey-list');
         }
     });
@@ -84,7 +84,7 @@ module.exports.displayEditPage = (req, res, next) => {
             //displayName: req.user ? req.user.displayName : ''})
             res.render('index', {
                 title: 'Edit Survey',
-                page: 'survey/survey-edit',
+                page: 'surveys/survey-edit',
                 survey: surveyToEdit,
                 displayName: req.user ? req.user.displayname : ''
             });
@@ -114,7 +114,7 @@ module.exports.processEditPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            // refresh the survey list
+            // refresh the survey list page
             res.redirect('/survey-list');
         }
     });
