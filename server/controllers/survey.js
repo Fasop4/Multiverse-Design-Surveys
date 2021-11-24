@@ -5,10 +5,6 @@ FileName : survey.js
 
 */
 
-let express = require('express');
-let router = express.Router();
-let mongoose = require('mongoose');
-
 // reference to the model
 let Survey = require('../models/survey');
 
@@ -65,7 +61,7 @@ module.exports.processAddPage = (req, res, next) => {
             res.end(err);
         } else {
             // refresh the survey list page
-            res.redirect('/survey-list');
+            res.redirect('/surveys');
         }
     });
 
@@ -115,7 +111,7 @@ module.exports.processEditPage = (req, res, next) => {
             res.end(err);
         } else {
             // refresh the survey list page
-            res.redirect('/survey-list');
+            res.redirect('/surveys');
         }
     });
 }
@@ -133,7 +129,7 @@ module.exports.performDelete = (req, res, next) => {
 
             // refresh the survey list
 
-            res.redirect('/survey-list');
+            res.redirect('/surveys');
         }
     });
 }

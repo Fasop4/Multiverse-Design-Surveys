@@ -1,0 +1,84 @@
+<div class="container">
+    <!-- message area -->
+    <% if(messages.length > 0) { %>
+    <div id="messageArea" class="alert alert-danger"><%= messages %></div>
+    <% } %>
+    <br />
+    <br />
+    <!-- form area -->
+    <form class="form-horizontal" method="POST" id="registerForm" novalidate>
+        <h3 class="hint-text text-center">
+            Creating an account is simple.<br />
+            Start creating surveys in less than a minute.
+            <i class="far fa-smile-wink"></i>
+        </h3>
+        <br />
+        <div class="form-group">
+            <p class="lead">
+                <i class="fas fa-user-secret"></i> Personal Information
+            </p>
+            <br />
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                    required />
+            </div>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+                    required />
+            </div>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-mail" required
+                    value="" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <p class="lead">
+                <i class="fas fa-user-shield"></i> System Identification
+            </p>
+            <br />
+            <div class="col-sm-10">
+                <input type="username" class="form-control" id="username " name="username"
+                    placeholder="Enter a User Name" required value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter a password"
+                    required value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                    placeholder="Confirm password" required value="" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" id="registerSubmitButton" name="registerSubmitButton"
+                    class="btn btn-dark">Register</button>
+                <button id="cancelButton" type="reset" class="btn btn-warning"><i class="fas fa-undo fa-lg"></i>
+                    Cancel</button>
+            </div>
+        </div>
+        <p class="text-center text-muted small">
+            Already have an account?
+            <a href="/user/login">Sign in</a>
+        </p>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />

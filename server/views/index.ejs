@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>
-    <%= title %>
-  </title>
-  <link rel='stylesheet' href='/content/app.css' />
-  <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-</head>
+<!-- head section of html-->  
+ <%- include('./content/partials/header.ejs'); %>
 
 <body>
   <!-- Nav Bar Section -->
-  <%- include('./content/partials/header.ejs'); %>
+  
 
   <%- include ('./content/partials/main_nav.ejs') %>
 
@@ -31,8 +25,7 @@
 
 
       <!-- Javascript section -->
-      <script src="/scripts/app.js"></script>
-      <script src="/jquery/dist/jquery.min.js"></script>
+      <script src="/Scripts/app.js"></script>
       <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

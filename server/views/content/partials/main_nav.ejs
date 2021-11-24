@@ -1,64 +1,61 @@
 <!--Main nav-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   
-    <a class="navbar-brand" href="#" >
-      <img src="/Assets/images/Multiverse_Design_LOGO.png" width="80" alt="">
-    </a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-        <ul class="navbar-nav ml-auto">
 
-          
+  <a class="navbar-brand" href="/">
+    <img src="/Assets/images/Multiverse_Design_LOGO.png" width="80" alt="">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ml-auto">
+
+
       <% if (title == "Home") { %>
-        <li class="nav-item active">
+      <li class="nav-item active">
         <% }  else {%>
-        <li class="nav-item">
+      <li class="nav-item">
         <% } %>
-          <a class="nav-link" href="/"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
-        </li>
-  
-          <% if (title == "Survey List") { %>
-          <li class="nav-item active ">
-            <% } else { %>
-          <li class="nav-item"></li>
-          <% } %>
-          <a class="nav-link" href="/survey-list"><i class="fas fa-lg fa-igloo"></i> Show Surveys List</a>
-          </li>
-  
-  
-          <% if (title == "Add Survey") { %>
-          <li class="nav-item active ">
-            <% } else { %>
-          <li class="nav-item"></li>
-          <% } %>
-          <a class="nav-link" href="/survey-list/add"><i class="fas fa-lg fa-question-circle"></i>Create Survey </a>
-          </li>
-  
-          
-          <% if (title == "User Login") { %>
-            <li class="nav-item active ">
-              <% } else { %>
-            <li class="nav-item"></li>
-            <% } %>
-            <a class="nav-link" href="/user/login"><i class="fas fa-lg fa-igloo"></i> User Login</a>
-            </li>
-        
-            <% if (title == "Register") { %>
-              <li class="nav-item active ">
-                <% } else { %>
-              <li class="nav-item"></li>
-            <% } %>
-              <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Register</a>
-              </li>
-              <!--TODO this needs to be move to the right side of the nav-->
-        <div class="jumbotron bg-dark text-light ">
-          <p class="lead">Welcome to our survey portal to know others better</p>
-        </div>
-      </div>
-    </nav>
+        <a class="nav-link" href="/"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
+      </li>
+
+      <% if (title == "Survey List") { %>
+      <li class="nav-item active ">
+        <% } else { %>
+      <li class="nav-item"></li>
+      <% } %>
+      <a class="nav-link" href="/surveys"><i class="fas fa-lg fa-igloo"></i> Show my Surveys</a>
+      </li>
+
+
+      <% if (title == "Add Survey") { %>
+      <li class="nav-item active ">
+        <% } else { %>
+      <li class="nav-item"></li>
+      <% } %>
+      <a class="nav-link" href="/surveys/add"><i class="fas fa-lg fa-question-circle"></i>Create Survey </a>
+      </li>
+
+      <% if (title == "Register") { %>
+      <li class="nav-item active ">
+        <% } else { %>
+      <li class="nav-item"></li>
+      <% } %>
+      <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Register</a>
+      </li>
+
+
+      <% if(typeof displayName == 'string' && displayName) { %>
+      <li class="navbar-text"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
+      <li class="nav-item"><a href="/user/logout" class="nav-link">
+          <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+      <% } else { %>
+      <li class="nav-item"><a href="/user/login" class="nav-link">
+          <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+      <% } %>
+  </div>
+</nav>

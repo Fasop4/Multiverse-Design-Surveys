@@ -38,16 +38,6 @@ mongoDB.once('open', () => {
     console.log('Connected to MongoDB succesfully');
 });
 
-//declaration of routers
-let indexRouter = require('../routes/index');
-let surveyRouter = require('../routes/survey');
-let userRouter = require('../routes/user'); //TODO complete
-
-//routing
-app.use('/', indexRouter);
-app.use('/surveys', surveyRouter);
-app.use('/user', userRouter); //TODO complete
-
 let app = express();
 
 // view engine setup
@@ -75,6 +65,10 @@ app.use(flash());
 app.use(pass.initialize());
 app.use(pass.session());
 
+// create a User Model Instance
+let userModel = require('../models/user');
+let User = userModel.User;
+
 // configuration of passport user
 
 // serialize and deserialize the User info
@@ -84,8 +78,9 @@ pass.deserializeUser(User.deserializeUser());
 // verify that the token sent by the user - check if valid
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = DB.secret;
-let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+jwtOptions.secretOrKey = DB.Secret;
+
+let strategy = new JWTStrat(jwtOptions, (jwt_payload, done) => {
   User.findById(jwt_payload.id)
     .then(user => {
       return done(null, user);
@@ -95,7 +90,17 @@ let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
     });
 });
 
-passport.use(strategy);
+pass.use(strategy);
+
+//declaration of routers
+let indexRouter = require('../routes/index');
+let surveyRouter = require('../routes/survey');
+let userRouter = require('../routes/user'); //TODO complete
+
+//routing
+app.use('/', indexRouter);
+app.use('/surveys', surveyRouter);
+app.use('/user', userRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
