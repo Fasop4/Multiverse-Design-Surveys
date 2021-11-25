@@ -1,12 +1,11 @@
 let pass = require("passport");
 let jwt = require('jsonwebtoken');
-let DB = require('../config/db');
 
-let express = require('express');
-let router = express.Router();
-let mongoose = require('mongoose');
 let userModel = require('../models/user');
 let User = userModel.User;
+
+//enviroment variables
+require('dotenv').config();
 
 module.exports.userListing = (req, res, next)  =>{
     res.send('Placeholder');
@@ -27,11 +26,11 @@ module.exports.displayLoginPage = (req, res, next) => {
     }
     else
     {
-        return res.redirect('/user/login');
+        return res.redirect('/');
     }
 }
 
-//TODO work in progress user authentication
+//TODO work in progress user authentication POST 
 module.exports.processLoginPage = (req, res, next) => {
     pass.authenticate('local', //local method to authenticate
     (err, user, info) => {
@@ -43,8 +42,9 @@ module.exports.processLoginPage = (req, res, next) => {
         // is there a user login error?
         if(!user)
         {
+            console.log(user._id);
             req.flash('loginMessage', 'Authentication Error');
-            return res.redirect('/user/login');
+            return res.redirect('login');
         }
         req.login(user, (err) => {
             // server error?
@@ -57,15 +57,15 @@ module.exports.processLoginPage = (req, res, next) => {
             {
                 id: user._id,
                 displayName: user.displayName,
-                username: user.username,
+                userName: user.userName,
                 email: user.email
             }
 
-            const authToken = jwt.sign(payload, DB.Secret, {
+            const authToken = jwt.sign(payload, process.env.SECRET_KEY, {
                 expiresIn: 604800 // 1 week
             });
 
-            return res.redirect('/surveys');
+            return res.redirect('surveys');
         });
     })(req, res, next);
 }
@@ -92,7 +92,7 @@ module.exports.displayRegisterPage = (req, res, next) => {
 module.exports.processRegisterPage = (req, res, next) => {
     // instantiate a user object
     let newUser = new User({
-        username: req.body.username,
+        userName: req.body.userName,
         email: req.body.email,
         displayName: req.body.displayName
     });
@@ -100,7 +100,7 @@ module.exports.processRegisterPage = (req, res, next) => {
     User.register(newUser, req.body.password, (err) => {
         if(err)
         {
-            
+            console.log("Error: Inserting New User");
             if(err.name == "UserExistsError")
             {
                 req.flash(
@@ -111,16 +111,15 @@ module.exports.processRegisterPage = (req, res, next) => {
             }
             return res.render('index',
             {
-                title: 'Register',
-                page: 'auth/register',
+                title: 'Login',
+                page: 'auth/login',
                 messages: req.flash('registerMessage'),
                 displayName: req.user ? req.user.displayName : ''
             });
         }
         else
         {
-            console.log(newUser);
-
+            
             return pass.authenticate('local')(req, res, () => {
                 res.redirect('/')
             });
