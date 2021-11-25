@@ -24,7 +24,7 @@ module.exports.displaySurveyList = (req, res, next) => {
                     title: 'My Survey List',
                     page: 'survey/survey-list',
                     SurveyList: surveyList,
-                    displayName: req.user ? req.user.displayname : ''
+                    displayName: req.user ? req.user.displayName : ''
                 });
             }
         }
@@ -47,7 +47,7 @@ module.exports.displayGeneralSurveyList = (req, res, next) => {
                     title: 'General Survey List',
                     page: 'survey/general-survey-list',
                     SurveyList: surveyList,
-                    displayName: req.user ? req.user.displayname : ''
+                    displayName: req.user ? req.user.displayName : ''
                 });
             }
         }
@@ -59,7 +59,7 @@ module.exports.displayAddPage = (req, res, next) => {
         title: 'Add Survey',
         page: 'survey/survey-add',
         survey: "",
-        displayName: req.user ? req.user.displayname : ''
+        displayName: req.user ? req.user.displayName : ''
     });
 }
 
@@ -105,7 +105,7 @@ module.exports.displayEditPage = (req, res, next) => {
                 title: 'Edit Survey',
                 page: 'survey/survey-edit',
                 survey: surveyToEdit,
-                displayName: req.user ? req.user.displayname : ''
+                displayName: req.user ? req.user.displayName : ''
             });
         }
     });

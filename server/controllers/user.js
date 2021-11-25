@@ -65,6 +65,14 @@ module.exports.processLoginPage = (req, res, next) => {
                 expiresIn: 604800 // 1 week
             });
 
+                //TODO pending
+            /*res.json({success: true, msg: ' User Logged in Succesfully', user: {
+                id: user._id,
+                displayName: user.displayName,
+                userName: user.userName,
+                email: user.email
+            }, token: authToken});*/
+
             return res.redirect('surveys');
         });
     })(req, res, next);
@@ -119,7 +127,9 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
         else
         {
-            
+            //TODO - pending to complete
+           // res.json({succes: true, msg: 'User Registered Successfully'});
+
             return pass.authenticate('local')(req, res, () => {
                 res.redirect('/')
             });
