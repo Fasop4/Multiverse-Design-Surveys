@@ -8,6 +8,9 @@ var app = require('./server/config/app');
 var debug = require('debug')('multiverse-survey:server');
 var http = require('http');
 
+//environment variables
+require('dotenv').config();
+
 /**
  * Get port from environment and store in Express.
  */

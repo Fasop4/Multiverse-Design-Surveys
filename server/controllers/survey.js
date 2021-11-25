@@ -21,8 +21,31 @@ module.exports.displaySurveyList = (req, res, next) => {
                 //console.log("no displayname passed here");
 
                 res.render('index', {
-                    title: 'Survey List',
+                    title: 'My Survey List',
                     page: 'survey/survey-list',
+                    SurveyList: surveyList,
+                    displayName: req.user ? req.user.displayname : ''
+                });
+            }
+        }
+    });
+}
+
+module.exports.displayGeneralSurveyList = (req, res, next) => {
+    Survey.find((err, surveyList) => {
+        if (err) {
+            return console.error(err);
+        } else {
+            //console.log(surveyList);
+            //console.log("inside /survey-list");
+            if (req.user) {
+               // console.log(req.user ? req.user.displayname : '');
+            } else {
+                //console.log("no displayname passed here");
+
+                res.render('index', {
+                    title: 'General Survey List',
+                    page: 'survey/general-survey-list',
                     SurveyList: surveyList,
                     displayName: req.user ? req.user.displayname : ''
                 });

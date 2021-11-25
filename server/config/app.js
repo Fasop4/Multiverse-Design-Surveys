@@ -27,18 +27,22 @@ let flash = require('connect-flash');
 //database setup
 
 let mongoose = require('mongoose');
-let DB = require('./db');
+//configuration of enviroment variables for secured passwords and access urls
+require('dotenv').config();
+
+const databaseURI = process.env.APP_DATABASE_URL;
+const secret = process.env.SECRET_KEY;
+
+let app = express();
 
 //point mongoose
-mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(databaseURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', () => {
     console.log('Connected to MongoDB succesfully');
 });
-
-let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -53,7 +57,7 @@ app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 //setup express session
 app.use(session({
-    secret: "MultiV3rs36",
+    secret: process.env.SECRET_KEY,
     saveUninitialized: false,
     resave: false
 }));
@@ -71,6 +75,9 @@ let User = userModel.User;
 
 // configuration of passport user
 
+// implement a User Authentication Strategy
+pass.use(User.createStrategy());
+
 // serialize and deserialize the User info
 pass.serializeUser(User.serializeUser());
 pass.deserializeUser(User.deserializeUser());
@@ -78,7 +85,7 @@ pass.deserializeUser(User.deserializeUser());
 // verify that the token sent by the user - check if valid
 let jwtOptions = {};
 jwtOptions.jwtFromRequest = ExtractJWT.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = DB.Secret;
+jwtOptions.secretOrKey = secret;
 
 let strategy = new JWTStrat(jwtOptions, (jwt_payload, done) => {
   User.findById(jwt_payload.id)
