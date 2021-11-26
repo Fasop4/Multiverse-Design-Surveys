@@ -75,9 +75,7 @@ module.exports.displayEditPage = (req, res, next) => {
             console.log(err);
             res.end(err);
         } else {
-            //show the edit view
-            //TODO need to check res.render('survey-edit', {title: 'Edit Survey', business: businessToEdit, 
-            //displayName: req.user ? req.user.displayName : ''})
+            
             res.render('index', {
                 title: 'Edit Survey',
                 page: 'survey/survey-edit',
@@ -127,7 +125,6 @@ module.exports.performDelete = (req, res, next) => {
         } else {
 
             // refresh the survey list
-
             res.redirect('/surveys');
         }
     });
