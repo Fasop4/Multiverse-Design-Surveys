@@ -5,15 +5,9 @@
 
       <form class="form" method="POST">
         <div class="form-group">
-          <label for="titleTextField">Title</label>
-          <input type="text" class="form-control" id="titleTextField" placeholder="Enter the Title" name="name"
-            value="<%= survey.title %>" required>
-        </div>
-
-        <div class="form-group">
-          <label for="subtitleTextField">Subtitle</label>
-          <input type="text" class="form-control" id="subtitleTextField" placeholder="Subtitle" name="subtitle"
-            value="<%= survey.subtitle %>" required>
+          <label for="titleTextField">Survey Name</label>
+          <input type="text" class="form-control" id="titleTextField" placeholder="Enter a name of the survey" name="surveyName"
+            value="<%= survey.surveyName %>" required>
         </div>
 
         <div class="form-group">

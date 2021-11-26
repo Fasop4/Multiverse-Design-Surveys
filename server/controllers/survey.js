@@ -31,29 +31,6 @@ module.exports.displaySurveyList = (req, res, next) => {
     });
 }
 
-module.exports.displayGeneralSurveyList = (req, res, next) => {
-    Survey.find((err, surveyList) => {
-        if (err) {
-            return console.error(err);
-        } else {
-            //console.log(surveyList);
-            //console.log("inside /survey-list");
-            if (req.user) {
-               // console.log(req.user ? req.user.displayname : '');
-            } else {
-                //console.log("no displayname passed here");
-
-                res.render('index', {
-                    title: 'General Survey List',
-                    page: 'survey/general-survey-list',
-                    SurveyList: surveyList,
-                    displayName: req.user ? req.user.displayName : ''
-                });
-            }
-        }
-    });
-}
-
 module.exports.displayAddPage = (req, res, next) => {
     res.render('index', {
         title: 'Add Survey',
@@ -70,8 +47,8 @@ module.exports.processAddPage = (req, res, next) => {
     //console.log(req.body.subtitle);
 
     let newSurvey = Survey({
-        "title": req.body.title,
-        "subtitle": req.body.subtitle,
+        "surveyName": req.body.surveyName,
+        //TODO "author": logged in user
         "description": req.body.description,
         "enterQuestion1": req.body.enterQuestion1,
         "enterQuestion2": req.body.enterQuestion2,
@@ -115,9 +92,8 @@ module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id
 
     let updatedSurvey = Survey({
-        "_id": id,
-        "title": req.body.title,
-        "subtitle": req.body.subtitle,
+        "surveyName": req.body.surveyName,
+        //TODO "author": logged in user
         "description": req.body.description,
         "enterQuestion1": req.body.enterQuestion1,
         "enterQuestion2": req.body.enterQuestion2,
