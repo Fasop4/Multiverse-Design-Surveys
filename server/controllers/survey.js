@@ -23,7 +23,7 @@ module.exports.displaySurveyList = (req, res, next) => {
                 //console.log("no displayname passed here");
 
                 res.render('index', {
-                    title: 'My Survey List',
+                    title: 'My Surveys',
                     page: 'survey/survey-list',
                     SurveyList: surveyList,
                     displayName: req.user ? req.user.displayName : ''
