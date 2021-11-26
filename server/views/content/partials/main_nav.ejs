@@ -45,26 +45,22 @@
       </li>
       <% } %>
 
-      <!--SHOW/HIDE TOOGLE FOR Create survey option in the nav bar-->
-      <% if(typeof displayName == 'string' && displayName) { %>
-          <% if (title == "Add Survey") { %>
+            
+      <% if (title == "Add Survey") { %>
       <li class="nav-item active">
         <% } else { %>
       <li class="nav-item"></li>
       <% } %>
       <a class="nav-link" href="/surveys/add"><i class="fas fa-lg fa-question-circle"></i> Create Survey</a>
       </li>
-      <% } else { %>
-      <li style= "display: none;">
-      </li>
-      <% } %>
+     
 
       <% if (title == "Register") { %>
       <li class="nav-item active ">
         <% } else { %>
       <li class="nav-item"></li>
       <% } %>
-      <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Sign In</a>
+      <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Sign up</a>
       </li>
 
 
