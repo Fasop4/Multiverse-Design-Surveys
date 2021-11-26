@@ -23,6 +23,16 @@
         <a class="nav-link" href="/"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
       </li>
 
+       <% if (title == "About") { %>
+      <li class="nav-item active">
+        <% }  else {%>
+      <li class="nav-item">
+        <% } %>
+        <a class="nav-link" href="/about"><i class="fas fa-lg fa-laptop-house"></i> About</a>
+      </li>
+
+      <!--SHOW/HIDE TOOGLE FOR SHOW MY SURVEYS AND PUBLIC SURVEY-->
+       <% if(typeof displayName == 'string' && displayName) { %>
       <% if (title == "My Survey List") { %>
       <li class="nav-item active ">
         <% } else { %>
@@ -30,22 +40,31 @@
       <% } %>
       <a class="nav-link" href="/surveys"><i class="fas fa-lg fa-igloo"></i> Show my Surveys</a>
       </li>
+      <% } else { %>
+      <a class="nav-link" href="/public-surveys"><i class="fas fa-lg fa-igloo"></i> Public Surveys</a>
+      </li>
+      <% } %>
 
-
-      <% if (title == "Add Survey") { %>
-      <li class="nav-item active ">
+      <!--SHOW/HIDE TOOGLE FOR Create survey option in the nav bar-->
+      <% if(typeof displayName == 'string' && displayName) { %>
+          <% if (title == "Add Survey") { %>
+      <li class="nav-item active">
         <% } else { %>
       <li class="nav-item"></li>
       <% } %>
-      <a class="nav-link" href="/surveys/add"><i class="fas fa-lg fa-question-circle"></i>Create Survey </a>
+      <a class="nav-link" href="/surveys/add"><i class="fas fa-lg fa-question-circle"></i> Create Survey</a>
       </li>
+      <% } else { %>
+      <li style= "display: none;">
+      </li>
+      <% } %>
 
       <% if (title == "Register") { %>
       <li class="nav-item active ">
         <% } else { %>
       <li class="nav-item"></li>
       <% } %>
-      <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Register</a>
+      <a class="nav-link" href="/user/register"><i class="fas fa-lg fa-igloo"></i> Sign In</a>
       </li>
 
 

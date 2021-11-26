@@ -4,9 +4,8 @@ Date: Nov-11-2021
 FileName : index.js
 */
 
-// create the User Model instance
-let userModel = require('../models/user');
-let User = userModel.User; //alias for user model
+// create Model instances
+let Survey = require('../models/survey');
 
 //home page
 module.exports.displayHomePage = (req, res, next) => {
@@ -27,11 +26,23 @@ module.exports.displayAboutPage = (req, res, next) => {
     });
 }
 
-//TODO
+//TODO 
 module.exports.displayPublicSurveysPage = (req, res, next) => {
-    res.render('index', {
-        title: 'About',
-        page: 'survey/public-surveys',
-        displayName: req.user ? req.user.displayName : ''
+    Survey.find((err, publicSurveyList) => {
+        if (err) {
+            return console.error(err);
+        } else {
+           
+            if (req.user) {
+               
+            } else {
+                    res.render('index', {
+                    title: 'Public Surveys',
+                    page: 'survey/public-surveys',
+                    PublicSurveyList: publicSurveyList,
+                    displayName: req.user ? req.user.displayName : ''
+                });
+            }
+        }
     });
 }

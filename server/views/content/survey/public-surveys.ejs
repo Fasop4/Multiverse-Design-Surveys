@@ -4,8 +4,7 @@
           <div class="offset-md-1 col-md-11">
               <h1><%= title %></h1>
 
-              <a href="/survey-list/add" class="btn btn-primary" role="button">
-                  <i class="fas fa-plus-circle"></i>General Survey List</a>
+              <p>Public Surveys</p>
 
               <br>
               <table class="table table-hover">
@@ -22,18 +21,17 @@
 
                       <!-- Repeatable Template Row -->
 
-                      <% for(let count = 0; count < GeneralSurveyList.length; count++) { %>
+                      <% for(let count = 0; count < PublicSurveyList.length; count++) { %>
                       <tr>
                       <!--TODO - pending to assign properties to controllers - PENDING -->
                           <td class="text-center col-2"><%= count + 1 %></td>
-                          <td class="text-center col-2"><%= GeneralSurveyList[count].title %></td> 
-                          <td class="text-center col-3"><%= GeneralSurveyList[count].author %></td>
-                          <td class="text-center col-5"><%= GeneralSurveyList[count].surveyName %></td>
-                          <td class="text-center col-5"><%= GeneralSurveyList[count].description %></td>
+                          <td class="text-center col-2"><%= PublicSurveyList[count].author %></td>
+                          <td class="text-center col-3"><%= PublicSurveyList[count].surveyName %></td>
+                          <td class="text-center col-5"><%= PublicSurveyList[count].description %></td>
 
-                          <td class="text-center col-1">
-                              <a href="/survey-list/edit/<%= GeneralSurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                  <i class="fas fa-pencil-alt"></i> Take Survey</a>
+                          <td class="text-center col-1"> //TODO
+                              <!--<a href="/surveys/edit/<%= PublicSurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                  <i class="fas fa-pencil-alt"></i> Take Survey</a>-->
                           </td>
 
                       </tr>

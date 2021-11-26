@@ -7,9 +7,9 @@ let User = userModel.User;
 //enviroment variables
 require('dotenv').config();
 
-module.exports.userListing = (req, res, next)  =>{
+/* module.exports.userListing = (req, res, next)  =>{
     res.send('Placeholder');
-}
+}*/
 
 //login page
 module.exports.displayLoginPage = (req, res, next) => {
