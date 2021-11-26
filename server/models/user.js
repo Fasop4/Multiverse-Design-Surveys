@@ -20,6 +20,20 @@ let User = mongoose.Schema
             trim: true,
             required: 'email address is required'
        },
+       firstName: 
+       {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'Display Name is required'
+       },
+       lastName: 
+       {
+            type: String,
+            default: '',
+            trim: true,
+            required: 'Display Name is required'
+       },
        displayName: 
        {
             type: String,

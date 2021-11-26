@@ -24,6 +24,10 @@ let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
+//call function for guard purposes
+const { requireAuth } = require ('../utils/index');
+
+
 //database setup
 
 let mongoose = require('mongoose');
@@ -104,9 +108,11 @@ let indexRouter = require('../routes/index');
 let surveyRouter = require('../routes/survey');
 let userRouter = require('../routes/user'); //TODO complete
 
+
+
 //routing
 app.use('/', indexRouter);
-app.use('/surveys', surveyRouter);
+app.use('/surveys', requireAuth, surveyRouter);
 app.use('/user', userRouter); 
 
 // catch 404 and forward to error handler

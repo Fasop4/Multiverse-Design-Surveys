@@ -7,9 +7,10 @@ let User = userModel.User;
 //enviroment variables
 require('dotenv').config();
 
-/* module.exports.userListing = (req, res, next)  =>{
+//TODO pending
+module.exports.userListing = (req, res, next)  =>{
     res.send('Placeholder');
-}*/
+}
 
 //login page
 module.exports.displayLoginPage = (req, res, next) => {
@@ -102,13 +103,16 @@ module.exports.processRegisterPage = (req, res, next) => {
     let newUser = new User({
         userName: req.body.userName,
         email: req.body.email,
-        displayName: req.body.displayName
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        displayName: req.body.firstName +" "+ req.body.lastName
     });
+    console.log(newUser);
 
-    User.register(newUser, req.body.password, (err) => {
+    User.create(newUser, req.body.password, (err) => {
         if(err)
         {
-            console.log("Error: Inserting New User");
+            console.log("Error: Inserting New User" + err);
             if(err.name == "UserExistsError")
             {
                 req.flash(
@@ -128,7 +132,7 @@ module.exports.processRegisterPage = (req, res, next) => {
         else
         {
             //TODO - pending to complete
-           // res.json({succes: true, msg: 'User Registered Successfully'});
+           res.json({success: true, msg: 'User Registered Successfully'});
 
             return pass.authenticate('local')(req, res, () => {
                 res.redirect('/')
@@ -136,6 +140,41 @@ module.exports.processRegisterPage = (req, res, next) => {
         }
     });
 }
+
+/*module.exports.processRegisterPage = async (req, res, next) => {
+    // instantiate a user object
+    let newUser = new User({
+        userName: req.body.userName,
+        email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        displayName: req.body.firstName + " " + req.body.lastName
+    });
+    newUser.isNew = true;
+    
+    try {
+        console.log(newUser);
+        let savedUser = await newUser.save();
+        console.log(savedUser);
+
+        if (savedUser) {
+            passport.authenticate('signup', {
+                    session: false
+                }),
+                async (req, res, next) => {
+                    res.json({
+                        message: 'Signup successful',
+                        user: req.user
+                    });
+                }
+
+        }
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+*/
 
 //logout
 module.exports.performLogout = (req, res, next) => {

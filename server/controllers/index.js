@@ -26,7 +26,7 @@ module.exports.displayAboutPage = (req, res, next) => {
     });
 }
 
-//TODO 
+// Public surveys page
 module.exports.displayPublicSurveysPage = (req, res, next) => {
     Survey.find((err, publicSurveyList) => {
         if (err) {

@@ -7,6 +7,8 @@ FileName : survey.js
 
 // reference to the model
 let Survey = require('../models/survey');
+let userModel = require('../models/user');
+let User = userModel.User;
 
 module.exports.displaySurveyList = (req, res, next) => {
     Survey.find((err, surveyList) => {
@@ -48,7 +50,7 @@ module.exports.processAddPage = (req, res, next) => {
 
     let newSurvey = Survey({
         "surveyName": req.body.surveyName,
-        //TODO "author": logged in user
+        "author": User.displayName,
         "description": req.body.description,
         "enterQuestion1": req.body.enterQuestion1,
         "enterQuestion2": req.body.enterQuestion2,
@@ -91,7 +93,7 @@ module.exports.processEditPage = (req, res, next) => {
 
     let updatedSurvey = Survey({
         "surveyName": req.body.surveyName,
-        //TODO "author": logged in user
+        "author": User.displayName,
         "description": req.body.description,
         "enterQuestion1": req.body.enterQuestion1,
         "enterQuestion2": req.body.enterQuestion2,

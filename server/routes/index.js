@@ -2,7 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/index');
-let userController = require('../controllers/user');
+
 
 /* GET home page. */
 router.get('/', indexController.displayHomePage);

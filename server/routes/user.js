@@ -4,8 +4,9 @@ let userController = require('../controllers/user');
 
 
 /* GET users listing. */
-//router.get('/', userController.userListing);
+router.get('/', userController.userListing);
 
+router.get('/login', userController.displayLoginPage);
 
 /* POST Route for processing the Login page */
 router.post('/login', userController.processLoginPage);
