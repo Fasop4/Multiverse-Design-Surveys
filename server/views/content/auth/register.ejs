@@ -6,7 +6,7 @@
     <br />
     <br />
     <!-- form area -->
-    <form class="form-horizontal" method="POST" id="registerForm" novalidate>
+    <form class="form-horizontal" method="POST" id="registerForm">
         <h3 class="hint-text text-center">
             Creating an account is simple.<br />
             Start creating surveys in less than a minute.
@@ -19,22 +19,21 @@
             </p>
             <br />
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
                     required />
             </div>
         </div>
         <div class="form-group">
             <br />
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
                     required />
             </div>
         </div>
         <div class="form-group">
             <br />
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-mail" required
-                    value="" />
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-mail" required />
             </div>
         </div>
         <br />
@@ -44,32 +43,35 @@
             </p>
             <br />
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="userName " name="userName"
-                    placeholder="Enter a User Name" required value="" />
+                <input type="text" class="form-control" id="userName " name="userName" placeholder="Enter a User Name"
+                    required />
             </div>
         </div>
         <div class="form-group">
             <br />
             <div class="col-sm-10">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter a password"
-                    required value="" />
+                    required />
             </div>
         </div>
-        <div class="form-group">
+        <!--//TODO optional implementation to check if password matches-->
+        <!--<div class="form-group">
             <br />
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                <input type="password" class="form-control" id="confirmPassword" name="password"
                     placeholder="Confirm password" required value="" />
             </div>
-        </div>
+        </div>-->
         <br />
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" id="registerSubmitButton" name="registerSubmitButton"
                     class="btn btn-dark">Register</button>
+
                 <a href="/home">
-                <button id="cancelButton" class="btn btn-warning"><i class="fas fa-undo fa-lg"></i>
-                    Cancel</button>
+                    <button id="cancelButton" class="btn btn-warning">Cancel <i
+                        class="fas fa-undo fa-lg"></i>
+                    </button>
                 </a>
             </div>
         </div>
