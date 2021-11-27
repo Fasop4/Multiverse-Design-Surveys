@@ -104,41 +104,6 @@ module.exports.processRegisterPage = (req, res, next) => {
     });
 }
 
-/*module.exports.processRegisterPage = async (req, res, next) => {
-    // instantiate a user object
-    let newUser = new User({
-        username: req.body.userName,
-        email: req.body.email,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        displayName: req.body.firstName + " " + req.body.lastName
-    });
-    newUser.isNew = true;
-    
-    try {
-        console.log(newUser);
-        let savedUser = await newUser.save();
-        console.log(savedUser);
-
-        if (savedUser) {
-            passport.authenticate('signup', {
-                    session: false
-                }),
-                async (req, res, next) => {
-                    res.json({
-                        message: 'Signup successful',
-                        user: req.user
-                    });
-                }
-
-        }
-
-    } catch (err) {
-        console.log(err);
-    }
-}
-*/
-
 //logout
 module.exports.performLogout = (req, res, next) => {
     req.logout();

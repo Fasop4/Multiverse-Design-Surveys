@@ -11,20 +11,17 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let cors = require('cors');
 
+
 //Modules for authentication
 let session = require('express-session');
 let passport = require('passport');
-//JWT
-//let passportJWT = require('passport-jwt');
-//let JWTStrat = passportJWT.Strategy;
-//let ExtractJWT = passportJWT.ExtractJwt;
 
 let passportLocal = require('passport-local');
 let localStrategy = passportLocal.Strategy;
 let flash = require('connect-flash');
 
 //call function for guard purposes
-const {requireAuth} = require('../utils/index');
+let { requireAuth } = require('../utils/index');
 
 
 //database setup
@@ -83,23 +80,6 @@ let User = userModel.User;
 
 // implement a User Authentication Strategy (fasop4)
 passport.use(User.createStrategy());
-
-//passport localStrategy
-
-/*passport.use(new localStrategy(
-    function(username, password, done) {
-      User.findOne({ username: username }, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) {
-          return done(null, false, { message: 'Incorrect username.' });
-        }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: 'Incorrect password.' });
-        }
-        return done(null, user);
-      });
-    }
-  ));*/
 
 // serialize and deserialize the User info
 passport.serializeUser(User.serializeUser());

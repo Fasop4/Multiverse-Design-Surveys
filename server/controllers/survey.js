@@ -4,6 +4,9 @@ Date: Nov-17-2021
 FileName : survey.js
 
 */
+let express = require('express');
+let router = express.Router();
+let mongoose = require('mongoose');
 
 // reference to the model
 let Survey = require('../models/survey');
@@ -11,24 +14,19 @@ let userModel = require('../models/user');
 let User = userModel.User;
 
 module.exports.displaySurveyList = (req, res, next) => {
+    
     Survey.find((err, surveyList) => {
         if (err) {
+            
             return console.error(err);
         } else {
-            //console.log(surveyList);
-            //console.log("inside /survey-list");
-            if (req.user) {
-               // console.log(req.user ? req.user.displayname : '');
-            } else {
-                //console.log("no displayname passed here");
-
-                res.render('index', {
-                    title: 'My Surveys',
-                    page: 'survey/survey-list',
-                    SurveyList: surveyList,
-                    displayName: req.user ? req.user.displayName : ''
-                });
-            }
+            
+            res.render('index', {
+                title: 'My Surveys',
+                page: 'survey/survey-list',
+                SurveyList: surveyList,
+                displayName: req.user ? req.user.displayName : ''
+            });
         }
     });
 }
@@ -92,6 +90,7 @@ module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id
 
     let updatedSurvey = Survey({
+        "_id" : id,
         "surveyName": req.body.surveyName,
         "author": User.displayName,
         "description": req.body.description,
@@ -131,7 +130,3 @@ module.exports.performDelete = (req, res, next) => {
         }
     });
 }
-
-/*.sort({
-    "firstName": 1
-}); // survey list alphabetically sorted */ //TODO for future implementation. Sorting of surveys
