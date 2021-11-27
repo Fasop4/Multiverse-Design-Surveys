@@ -1,10 +1,9 @@
-
-let express = require ('express');
-let passport = require('passport');
 let mongoose = require('mongoose');
+let passport = require('passport');
+
 
 // helper function for guard purposes
-module.exports.requireAuth = (req, res, next) =>
+function requireAuth (req, res, next) 
 {
     // check if the user is logged in
     if(!req.isAuthenticated())
@@ -13,3 +12,5 @@ module.exports.requireAuth = (req, res, next) =>
     }
     next();
 }
+
+module.exports = {requireAuth};
