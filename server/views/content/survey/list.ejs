@@ -1,0 +1,112 @@
+
+-->
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+  <!-- Main Content -->
+  
+<main class="container">
+    
+        <div class="row justify-content-center">
+            <div class="col-5 align-self-start">
+                <h1 style="color: white; margin-top: 80px; margin-bottom: 80px;">Available Survey List</h1>
+            </div>
+            <div class="col-4 align-self-end">
+                <% if(typeof userId=='string' && userId ) {%>
+                <div class="card-body" style="margin-top: 50px; margin-bottom: 80px; border-radius: 15px 50px; border: 2px solid #1663be; background-color: transparent;">
+                <div class ="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-1">
+                            <a class="link" href="/survey-list/add/"><i class="fas fa-plus-circle fa-5x newsurvey" style=" cursor: pointer; cursor: hand; margin-right: 50px;"></i></a>
+                        </div>
+                        <div class="col">
+                            <h4 style="color: white; margin-top: 25px; margin-left: 80px;" class="card-title">Create New Survey</h4>
+                        </div>
+                    </div>    
+                </div>
+
+
+
+
+                </div>     
+                <%} else {%>
+                   <div class="card-body" style="margin-top: 50px; margin-bottom: 80px; border-radius: 15px 50px; border: 2px solid #2663be; background-color: transparent;">
+                <div class ="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-1">
+                            <a class="link" href="/login/"><i class="fas fa-plus-circle fa-5x newsurvey" style=" cursor: pointer; cursor: hand; margin-right: 50px;"></i></a>
+                        </div>
+                        <div class="col">
+                            <h4 style="color: white; margin-top: 25px; margin-left: 80px;" class="card-title">Create new survey</h4>
+                        </div>
+                    </div>    
+                </div>
+                </div>
+                <%}%>  
+
+            </div>
+        </div>
+            <div class="col-md-11 text-center">
+                    <div class="row">
+                <% for(let count = 0; count < SurveyList.length; count++) { %>
+                    <% if(typeof userId=='string' && userId ) {%>
+                        <% if ( today >= SurveyList[count].startdate && today <= SurveyList[count].enddate) {%>
+                            <div class="col-4">    
+                                    <div class="card text-center popup" style="background-color: transparent; margin-bottom: 75px;" class="d-flex">
+                                        <div class="card-header  text-muted" style="color:white; font-family: Courier; font-size:120%;"></div>
+                                        <div class="card-body" style="border-radius: 15px 50px; background-color: #1663be;   cursor: pointer; cursor: hand;" onclick="window.location='/survey-list/survey/<%= SurveyList[count]._id %>';">
+                                            <div class="row">
+
+                                            <div class="col">
+                                            <h4 style="color: white; margin-top: 25px; margin-right: 40px;" class="card-title"><%= SurveyList[count].title %></h4>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer"  style=" color:white; font-family: Courier;  font-size:120%;">
+                                        Available until: <%= SurveyList[count].enddate.toISOString().split('T')[0] %>
+                                        </div>
+                                    </div>
+                                </div>
+                    <% } } else { %>
+                    
+                            <% if ( today >= SurveyList[count].startdate && today <= SurveyList[count].enddate) {%>
+                                <div class="col-6">    
+                                    <div class="card text-center popup" style="background-color: transparent; margin-bottom: 75px;" class="d-flex">
+                                        <div class="card-header  text-muted" style=" color:white; font-family: Courier; font-size:120%;"></div>
+                                        <div class="card-body" style="border-radius: 15px 50px; background-color: #73be16; cursor: pointer; cursor: hand;"  onclick="window.location='/login/';">
+                                            <div class="row">                                                                     
+
+
+
+                                            <div class="col">
+                                            <h4 style="color: white; margin-bottom: 15px;" class="card-title"><%= SurveyList[count].title %></h4>
+                                            <p  class="card-text">Login to Complete the Survey</p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer"  style=" color:white; font-family: Courier;  font-size:120%;">
+                                        Available until: <%= SurveyList[count].enddate.toISOString().split('T')[0] %>
+                                        </div>
+                                    </div>
+                                </div>    
+                            <% } %>
+                        
+                    <% } } %>
+                    
+                </div>
+            </div>
+        
+    </div>
+    
+</main>
+  
+<%- include ../partials/survey_bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>
+  
+
+
+
+
+

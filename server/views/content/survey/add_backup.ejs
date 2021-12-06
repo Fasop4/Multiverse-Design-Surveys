@@ -1,0 +1,147 @@
+<%- include ../partials/header.ejs %>
+
+<%- include ../partials/main_nav.ejs %>
+
+<!-- Content for the Add page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            <form class="form" method="POST">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <b>Survey Participant Basic Information</b>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <label for="nameTextField"><b>Contact Name</b></label>
+                            <input type="text" class="form-control"
+                            id="nameTextField"
+                            placeholder="Enter contact name"
+                            name="name" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="contactnoTextField"><b>Contact Number</b></label>
+                            <input type="text" class="form-control"
+                            id="contactnoTextField"
+                            placeholder="Enter contact number"
+                            name="contactno" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="emailTextField"><b>Email</b></label>
+                            <input type="text" class="form-control"
+                            id="emailTextField"
+                            placeholder="Enter email address"
+                            name="email" required>
+                        </div>                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <b>Product Related Questons</b>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <label for="nameTextField">This product helps to accomplish the goal</label>
+                            <select name="accomplish" id="accomplish" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                                <option value="Yes" selected>Yes</option>
+                                <option value="No">No</option>
+                                <option value="N/A">N/A</option>
+                            </select>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="nameTextField">How likely are you to recommend this product?(1-10)</label>
+                            <select name="recommend" id="recommend" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Highly Likely" selected>Highly Likely</option>
+                              <option value="Likely">Likely</option>
+                              <option value="N/A">N/A</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameTextField">Which of the description below best matches you?</label>
+                            <select name="bestmatch" id="bestmatch" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Best Match" selected>Best Match</option>
+                              <option value="Match">Match</option>
+                              <option value="Not Match">Not Match</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameTextField">How easy is this product to use? (1-10)</label>
+                            <select name="easyuse" id="easyuse" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Very Easy" selected>Very Easy</option>
+                              <option value="Easy">Easy</option>
+                              <option value="Difficult">Difficult</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <b>Product Price Related Question</b>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <label for="nameTextField">Are you satisfied with this product?</label>
+                            <select name="satisfied" id="satisfied" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Very Satisfied" selected>Very Satisfied</option>
+                              <option value="Satisfied">Satisfied</option>
+                              <option value="Not Satisfied">Not Satisfied</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameTextField">Is the price competitive in the market?</label>
+                            <select name="competitive" id="competitive" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Yes" selected>Yes</option>
+                              <option value="No">No</option>
+                              <option value="N/A">N/A</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameTextField">How ofter do you use this product?</label>
+                            <select name="oftenuse" id="oftenuse" class="form-select form-select-sm" aria-label=".form-select-lg example">
+                              <option value="Daily" selected>Daily</option>
+                              <option value="Weekly">Weekly</option>
+                              <option value="N/A">N/A</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Comments</label>
+                          <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br/>
+              <button class="btn btn-primary" type="submit">
+                <i class="fas fa-edit"></i> Submit</button>
+            
+                <a href="/survey-list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> Cancel</a>
+            </form>
+                
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<%- include ../partials/bottom_nav.ejs %>  
+
+<%- include ../partials/footer.ejs %>

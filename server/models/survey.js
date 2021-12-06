@@ -4,7 +4,7 @@ Date: Nov-12-2021
 FileName : survey.js
 
 */
-let mongoose = require('mongoose');
+//let mongoose = require('mongoose');
 
 /*let templateSurveyModel = new mongoose.Schema ({
     author: {
@@ -46,9 +46,10 @@ let mongoose = require('mongoose');
 });
 */
 
+/*
 //create a model class
-let surveyModel = mongoose.Schema({ 
-    author: String, 
+let surveyModel = mongoose.Schema({
+    author: String,
     surveyName: String,
     description: String,
     questions: {
@@ -60,5 +61,24 @@ let surveyModel = mongoose.Schema({
 }, {
     collection: "survey"
 });
+
+*/
+
+const { ObjectId } = require('mongodb');
+let mongoose = require('mongoose');
+
+// create a model class for survey document
+let surveyModel = mongoose.Schema({
+    title: String,
+    type: String,
+    startdate: Date,
+    enddate: Date,
+    username: String,
+    question: Array
+}, {
+    collection: "surveys"
+});
+
+
 
 module.exports = mongoose.model('Survey', surveyModel);

@@ -4,6 +4,7 @@ Date: Nov-11-2021
 FileName : index.js
 */
 
+
 // create Model instances
 let Survey = require('../models/survey');
 
@@ -32,11 +33,11 @@ module.exports.displayPublicSurveysPage = (req, res, next) => {
         if (err) {
             return console.error(err);
         } else {
-           
+
             if (req.user) {
-               
+
             } else {
-                    res.render('index', {
+                res.render('index', {
                     title: 'Public Surveys',
                     page: 'survey/public-surveys',
                     PublicSurveyList: publicSurveyList,
