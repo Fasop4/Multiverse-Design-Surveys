@@ -3,6 +3,9 @@ Author: Multiverse Design
 Date: Nov-17-2021
 FileName : app.js
 */
+require('dotenv').config();
+//path.resolve(process.cwd(), '.env')
+
 
 let createError = require('http-errors');
 let express = require('express');
@@ -24,11 +27,11 @@ let flash = require('connect-flash');
 let { requireAuth } = require('../utils/index');
 
 
+
 //database setup
 
 let mongoose = require('mongoose');
 //configuration of enviroment variables for secured passwords and access urls
-require('dotenv').config();
 
 const databaseURI = process.env.APP_DATABASE_URL;
 const secret = process.env.SECRET_KEY;
@@ -96,12 +99,12 @@ app.use('/surveys', requireAuth, surveyRouter);
 app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

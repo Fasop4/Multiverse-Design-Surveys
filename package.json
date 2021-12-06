@@ -17,7 +17,6 @@
     "http-errors": "^1.8.1",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "passport": "^0.5.0",
@@ -28,7 +27,7 @@
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.6",
     "@types/passport-jwt": "^3.0.6",
-    "mongoose": "^6.0.12",
+    "mongoose": "^6.0.14",
     "node": "^17.1.0"
   },
   "scripts": {
