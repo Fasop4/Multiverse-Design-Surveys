@@ -1,8 +1,61 @@
-<div class="container">
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h1><%= title %></h1>
+<h1>this is <%= title %>page</h1>
 
-<p>this is home page</p>
+<div class="row">
+      <div class="col-md">
+      <!-- Home Page  --> 
+        <% if (title == "Home"){ %>
+          <h3 class="fill fw-bold">Welcome to Multiverse Design surveys</h3>
+          <h2 class="fill fw-bold">Create your own survey here</h2>
+          <a class="btn btn-primary" href="/register">Sign Up Now</a>
+        <div class="container-fluid py-5">  
 
-</div>
+              <!--project detail page-->    
+            <% } else if (title == "Projects"){%>
+              <h2 class="display-4 fw-bold">Project Details</h2>
+              <h3>TO DO</h3> 
+              Survey page
+            <% } else if (title == "Active Survey"){%>
+             login page
+            <% } else if (title == "Login") {%>  
+              <h2 class="display-4 fw-bold">Project Details</h2>
+              <h3>TO DO</h3>
+            <% } %>
+        </div>
+
+
+    <!-- If you click the div, you are directed to survey list page. -->
+    <div class="container px-4">
+      <div class="row gx-5">
+        <div style="margin-bottom: 30px; cursor: pointer; cursor: hand;" class="col" onclick="location.href='/surveys';">
+          <div class="p-4 c2 c2" >
+            Step 1
+            <h3 class="pt-5">Go To Survey List.</h3> <h1 style="text-align: right"><i class="fas fa-list"></i></h1>
+          </div>
+        </div>
+
+        
+        <!-- If you are logged-in, you are directed to survey list, but if you are not, 
+        you are directed to login page -->
+        
+        <% if(typeof displayName=='string' && displayName) {%>
+        <div  style="margin-bottom: 30px; cursor: pointer; cursor: hand;" class="col" onclick ="location.href='/surveys';">
+          <div class="p-4 c2 c2">
+            Step 2
+            <h3 class="pt-5"> Fill Up Surveys.</h3><h1 style="text-align: right"><i class="fas fa-user-edit"></i></h1>
+          </div>
+        </div>
+        <% } else { %>
+        <div  style="margin-bottom: 30px; cursor: pointer; cursor: hand;" class="col" onclick ="location.href='/user/login';">
+          <div class="p-4 c2 c2">
+            Step 2
+            <h3 class="pt-5"> Fill Up Surveys.</h3><h1 style="text-align: right"><i class="fas fa-user-edit"></i></h1>
+          </div>
+        </div> <% } %>
+        <div  style="margin-bottom: 30px; cursor: pointer; cursor: hand;" class="col">
+          <div class="p-4 c2 c2">
+            Step 3
+            <h3 class="pt-5"> Hurray! Get Results.</h3><h1 style="text-align: right"><i class="fas fa-gift"></i></h1>
+          </div>
+        </div>
+      </div>
+    </div>
