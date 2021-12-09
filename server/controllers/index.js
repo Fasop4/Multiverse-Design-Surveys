@@ -26,23 +26,38 @@ module.exports.displayAboutPage = (req, res, next) => {
     });
 }
 
+//Project page rendering with passing different values
+module.exports.displayProjectsPage = (req, res, next) => {
+    res.render('index', {
+        title: 'Projects',
+        page: 'projects',
+        displayName: req.user ? req.user.displayName : ''
+    });
+}
+
 // Public surveys page
 module.exports.displayPublicSurveysPage = (req, res, next) => {
     Survey.find((err, publicSurveyList) => {
         if (err) {
             return console.error(err);
         } else {
-           
+
             if (req.user) {
-               
+
             } else {
-                    res.render('index', {
+                let currentDate = new Date();
+
+                console.log(publicSurveyList);
+                console.log(currentDate);
+                res.render('index', {
                     title: 'Public Surveys',
                     page: 'survey/public-surveys',
                     PublicSurveyList: publicSurveyList,
-                    displayName: req.user ? req.user.displayName : ''
+                    displayName: req.user ? req.user.displayName : '',
+                    today: currentDate
                 });
             }
         }
     });
 }
+
