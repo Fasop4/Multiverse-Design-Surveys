@@ -1,3 +1,5 @@
+//Mohammad Wahiduzzaman
+
 // require modules for the User Model
 let mongoose = require('mongoose');
 let passportLocalMongoose = require('passport-local-mongoose');
@@ -20,10 +22,7 @@ let User = mongoose.Schema
             trim: true,
             required: 'email address is required'
        },
-       /*password: {
-          type: String,
-          required: true
-       },*/
+ 
        firstName: 
        {
             type: String,
