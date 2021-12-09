@@ -1,4 +1,5 @@
 <!--Main nav-->
+<!--Shahriar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <a class="navbar-brand" href="/">
@@ -15,14 +16,11 @@
     <ul class="navbar-nav ml-auto">
 
       <% if(typeof displayName == 'string' && displayName) { %>
-
-      <% if (title == "home") { %>
-      <li class="nav-item active"> 
-      <% } else { %>
+    
       <li class="nav-item"> 
       <a class="nav-link" href="/"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
       </li>
-      <% } %>
+      
 
       <li class="nav-item">
       <a class="nav-link" href="/about"><i class="fas fa-lg fa-laptop-house"></i> About</a>
@@ -45,9 +43,13 @@
       </li>
 
       <li class="nav-item">
-      <a class="nav-link" href="/about"><i class="fas fa-lg fa-laptop-house"></i> About</a>
+      <a class="nav-link" href="/about"><i class="fas fa-lg fa-laptop-house"></i> About Us</a>
       </li>
 
+       <li class="nav-item">
+      <a class="nav-link" href="/projects"><i class="fas fa-lg fa-laptop-house"></i> Project</a>
+      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="/public-surveys"><i class="fas fa-lg fa-igloo"></i> Public Surveys</a></li>
 
