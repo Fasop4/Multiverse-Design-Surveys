@@ -1,56 +1,106 @@
-  <!-- Main Content -->
-  <div class="container">
-      <div class="row">
-          <div class="offset-md-1 col-md-11">
-              <h1><%= title %></h1>
+  <!-- Shahriar -->
+    <!-- Main Content -->
+  <div class="row justify-content-center">
+    <div class="col-5 align-self-start">
+        <h1 style="color: white; margin-top: 80px; margin-bottom: 80px;">My surveys</h1>
+    </div>
+    <div class="col-4 align-self-end">
+        <% if(typeof displayName=='string' && displayName ) {%>
+        <div class="card-body"
+            style="margin-top: 50px; margin-bottom: 80px; border-radius: 15px 50px; border: 2px solid #1663be; background-color: transparent;">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-1">
+                        <a class="link" href="/surveys/add/"><i class="fas fa-plus-circle fa-5x newsurvey"
+                                style=" cursor: pointer; cursor: hand; margin-right: 50px;"></i></a>
+                    </div>
+                    <div class="col">
+                        <h4 style="color: white; margin-top: 25px; margin-left: 80px;" class="card-title">Create new
+                            survey</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%} else {%>
+        <div class="card-body"
+            style="margin-top: 50px; margin-bottom: 80px; border-radius: 15px 50px; border: 2px solid #1663be; background-color: transparent;">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-1">
+                        <a class="link" href="/login/"><i class="fas fa-plus-circle fa-5x newsurvey"
+                                style=" cursor: pointer; cursor: hand; margin-right: 50px;"></i></a>
+                    </div>
+                    <div class="col">
+                        <h3 style="color: white; margin-top: 25px; margin-left: 80px;" class="card-title">Login to
+                            Create new surveys</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>  
 
-              <a href="/surveys/add" class="btn btn-primary" role="button">
-                  <i class="fas fa-plus-circle"></i>Create a Survey</a>
-
-              <br>
-              <table class="table table-hover">
-                  <thead class="table-dark">
-                      <!-- Header Row-->
-                      <tr>
-                          <% if(typeof displayName == 'string' && displayName) { %>
-                          <th class="text-center col-2">#</th>
-                          <th class="text-center col-2">Title</th>
-                          <th class="text-center col-3">Subtitle</th>
-                          <th class="text-center col-5">Description</th>
-                          <th></th>
-                          <th></th>
-                          <% } else { %>
-                          <th class="text-center col-2">#</th> <!--TODO pending to correct if condition to make sure it works as intended-->
-                          <th class="text-center col-2">Title</th>
-                          <th class="text-center col-3">Subtitle</th>
-                          <th class="text-center col-5">Description</th>
-                          <th class="text-center col-5">Edit</th>
-                          <th class="text-center col-5">Delete</th>
-
-                          <% } %>
-                      </tr>
-
-                      <!-- Repeatable Template Row -->
-
-                      <% for(let count = 0; count < SurveyList.length; count++) { %>
-                      <tr>
-                          <td class="text-center col-2"><%= count + 1 %></td>
-                          <td class="text-center col-2"><%= SurveyList[count].author %></td>
-                          <td class="text-center col-3"><%= SurveyList[count].surveyName %></td>
-                          <td class="text-center col-5"><%= SurveyList[count].description %></td>
-
-                          <td class="text-center col-1">
-                              <a href="/surveys/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
-                                  <i class="fas fa-pencil-alt"></i> Update</a>
-                          </td>
-                          <td class="text-center col-1">
-                              <a href="/surveys/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
-                                  <i class="fas fa-trash-alt"></i> Delete</a>
-                          </td>
-
-                      </tr>
-                      <% } %>
-              </table>
           </div>
-      </div>
-  </div>
+          
+
+          <!-- Show message that only login users can access the survey -->
+
+          <div class="col-md-11 text-center">
+          
+              <div class="row">    
+      <% for(let count = 0; count < SurveyList.length; count++) { %>
+          <p>HI</p>
+        <% if(SurveyList[count].displayName == displayName) {%>
+
+        <div class="col-8">
+            <div class="card text-center popup2" style="background-color: transparent; margin-bottom: 75px;"
+                class="d-flex">
+                <div class="card-header  text-muted" style="color:white; font-family: Courier; font-size:120%;">
+                </div>
+                <div class="card-body"
+                    style="border-radius: 15px 50px; background-color: #1663be;   cursor: pointer; cursor: hand;"
+                    onclick="window.location='/surveys/report/<%= SurveyList[count]._id %>';">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../Assets/images/reportlogo.png" class="login-img d-none d-lg-block"
+                                class="img-fluid">
+                        </div>
+                        <div class="col">
+                            <h4 style="color: white; margin-top: 25px; margin-right: 40px;" class="card-title">
+                                <%= SurveyList[count].surveyName %></h4>
+                        </div>
+                    </div>
+                </div>
+                <% if ( today >= SurveyList[count].startDate && today <= SurveyList[count].endDate) {%>
+                <div class="card-footer" style=" color:white; font-family: Courier;  font-size:120%;">
+                    Available until: <%= SurveyList[count].endDate.toISOString().split('T')[0] %>
+                </div>
+                <%} else if ( today > SurveyList[count].endDate) {%>
+                <div class="card-footer" style=" color:white; font-family: Courier;  font-size:120%;">
+                    Expired at: <%= SurveyList[count].endDate.toISOString().split('T')[0] %>
+                </div>
+                <%} else {%>
+                <div class="card-footer" style=" color:white; font-family: Courier;  font-size:120%;">
+                    Starts on: <%= SurveyList[count].startDate.toISOString().split('T')[0] %>
+                </div>
+                <%}%>
+                                  </div>
+                          </div>
+
+                          <div class="col">
+                          <a class=" popup2" href="/surveys/edit/<%= SurveyList[count]._id %>">
+                <i style="margin-top: 55px; cursor: pointer; cursor: hand; color: limegreen;"
+                    class="fas fa-3x fa-pen-square"></i></a>
+            </div>
+
+            <div class="col">
+                <a href="/surveys/delete/<%= SurveyList[count]._id %>"
+                    onclick="return confirm('Are you sure you want to delete this item')">
+                    <i style="margin-top: 55px; cursor: pointer; cursor: hand; color: red;"
+                        class="fas fa-3x fa-trash-alt popup2"></i></a>
+            </div>
+            <% } }  %>
+
+        </div>
+
+    </div>
+</div>
