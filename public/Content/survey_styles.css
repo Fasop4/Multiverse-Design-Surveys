@@ -269,8 +269,7 @@ input[type="submit"]:hover {
 
 .navbar-text {
     color: rgb(51, 87, 206);
-    /*margin-left: 100px;*/
-    padding: 5px;
+    margin-left: 100px;
 }
 
 .navbar-nav {
