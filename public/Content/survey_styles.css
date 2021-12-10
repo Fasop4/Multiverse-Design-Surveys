@@ -224,6 +224,10 @@ input[type="submit"]:hover {
     float: right;
 }
 
+img {
+    border-radius: 50%;
+  }
+
 
 /* style for login page */
 
