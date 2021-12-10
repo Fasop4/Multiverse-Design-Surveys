@@ -60,7 +60,7 @@ let User = mongoose.Schema
     }
 );
 
-// configure options for User Model
+// configure options for User Model //fabian
 
 let options = ({ missingPasswordError: 'Wrong / Missing Password', });
 

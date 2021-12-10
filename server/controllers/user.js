@@ -71,7 +71,7 @@ module.exports.displayRegisterPage = (req, res, next) => {
 module.exports.processRegisterPage = (req, res, next) => {
     // instantiate a user object
     let newUser = new User({
-        username: req.body.userName,
+        username: req.body.username,
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -80,7 +80,6 @@ module.exports.processRegisterPage = (req, res, next) => {
 
     User.register(newUser, req.body.password, (err) => {
         if (err) {
-            console.log("Error: Inserting New User" + err);
             if (err.name == "UserExistsError") {
                 req.flash(
                     'registerMessage',
@@ -89,15 +88,14 @@ module.exports.processRegisterPage = (req, res, next) => {
                 console.log('Error: User Already Exists!')
             }
             return res.render('index', {
-                title: 'Login',
-                page: 'auth/login',
+                title: 'Register',
+                page: 'auth/register',
                 messages: req.flash('registerMessage'),
                 displayName: req.user ? req.user.displayName : ''
             });
         } else {
-            //res.json({success: true, msg: 'User Registered Successfully'});
 
-            return passport.authenticate('local'), (req, res => {
+            return passport.authenticate('local')(req, res, () => {
                 res.redirect('/home')
             });
         }
