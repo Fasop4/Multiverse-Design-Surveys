@@ -46,9 +46,6 @@ module.exports.displayPublicSurveysPage = (req, res, next) => {
 
             } else {
                 let currentDate = new Date();
-
-                console.log(publicSurveyList);
-                console.log(currentDate);
                 res.render('index', {
                     title: 'Public Surveys',
                     page: 'survey/public-surveys',
