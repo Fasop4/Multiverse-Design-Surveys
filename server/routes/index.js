@@ -2,6 +2,8 @@ let express = require('express');
 let router = express.Router();
 
 let indexController = require('../controllers/index');
+//Fabian
+let surveyController = require('../controllers/survey');
 
 
 /* GET home page. */
@@ -19,6 +21,11 @@ router.get('/projects', indexController.displayProjectsPage);
 /* GET PublicSurveys Page Us page. */
 router.get('/public-surveys', indexController.displayPublicSurveysPage);
 
+//Fabian
+/* GET Route for displaying the View Survey page - UPDATE Operation */
+router.get('/publicSurveys/:id', surveyController.displayExistingSurveyPage);
 
+/* POST Route for submitting survey page - Operation */
+router.post('/publicSurveys/:id', surveyController.processExistingSurveyPage);
 
 module.exports = router;

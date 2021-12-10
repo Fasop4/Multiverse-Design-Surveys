@@ -29,4 +29,12 @@ router.post('/edit/:id', surveyController.processEditPage);
 /* GET to perform DELETE Operation */
 router.get('/delete/:id', surveyController.performDelete);
 
+//Fabian
+/* GET to view report page */
+router.get('/report/:id', surveyController.displayReportViewPage);
+
+/* POST report page */
+router.post('/report/:id', surveyController.displayReportViewPage)
+
+
 module.exports = router;

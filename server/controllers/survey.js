@@ -107,7 +107,7 @@ module.exports.processEditPage = (req, res, next) => { //TODO
         "username": req.body.username,
         "surveyName": req.body.surveyName,
         "surveyType": req.body.surveytype,
-        "description": req.body.description,
+        "description": req.body.description, //TODO possible future feature
         "startDate": req.body.startdate,
         "endDate": req.body.enddate,
         "question" : question
