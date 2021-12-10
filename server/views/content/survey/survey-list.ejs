@@ -29,7 +29,7 @@
                   <div class="container-fluid">
                       <div class="row justify-content-center">
                           <div class="col-1">
-                              <a class="link" href="/login/"><i class="fas fa-plus-circle fa-5x newsurvey"
+                              <a class="link" href="/user/login"><i class="fas fa-plus-circle fa-5x newsurvey"
                                       style=" cursor: pointer; cursor: hand; margin-right: 50px;"></i></a>
                           </div>
                           <div class="col">
@@ -42,14 +42,13 @@
               <%}%>  
 
           </div>
-          
+        </div>
 
-          <!-- Show message that only login users can access the survey -->
 
           <div class="col-md-11 text-center">
           
               <div class="row">    
-      <% for(let count = 0; count < SurveyList.length; count++) { %>
+            <% for(let count = 0; count < SurveyList.length; count++) { %>
               <% if(SurveyList[count].displayName == displayName) {%>
 
               <div class="col-8">
@@ -84,14 +83,12 @@
                           Starts on: <%= SurveyList[count].startDate.toISOString().split('T')[0] %>
                       </div>
                       <%}%>
-                                  </div>
-                          </div>
-
-                          <div class="col">
+                             
+                        <div class="col">
                           <a class=" popup2" href="/surveys/edit/<%= SurveyList[count]._id %>">
                       <i style="margin-top: 55px; cursor: pointer; cursor: hand; color: limegreen;"
                           class="fas fa-3x fa-pen-square"></i></a>
-                  </div>
+                        </div>
 
                   <div class="col">
                       <a href="/surveys/delete/<%= SurveyList[count]._id %>"
@@ -100,9 +97,7 @@
                               class="fas fa-3x fa-trash-alt popup2"></i></a>
                   </div>
                   <% } }  %>
-
               </div>
-
           </div>
       </div>
   </div>
