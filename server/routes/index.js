@@ -13,8 +13,13 @@ router.get('/home', indexController.displayHomePage);
 /* GET About Us page. */
 router.get('/about', indexController.displayAboutPage);
 
+/* GET projects page. */
+router.get('/projects', indexController.displayPublicSurveysPage);
+
 //TODO
 /* GET PublicSurveys Page Us page. */
 router.get('/public-surveys', indexController.displayPublicSurveysPage);
+
+router.get('/projects', indexController.displayPublicSurveysPage);
 
 module.exports = router;
