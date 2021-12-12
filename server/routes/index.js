@@ -23,9 +23,9 @@ router.get('/public-surveys', indexController.displayPublicSurveysPage);
 
 //Fabian
 /* GET Route for displaying the View Survey page - UPDATE Operation */
-router.get('/publicSurveys/:id', surveyController.displayExistingSurveyPage);
+router.get('/public-surveys/:id', surveyController.displayExistingSurveyPage);
 
 /* POST Route for submitting survey page - Operation */
-router.post('/publicSurveys/:id', surveyController.processExistingSurveyPage);
+router.post('/public-surveys/:id', surveyController.processExistingSurveyPage);
 
 module.exports = router;

@@ -42,18 +42,14 @@ module.exports.displayPublicSurveysPage = (req, res, next) => {
             return console.error(err);
         } else {
 
-            if (req.user) {
-
-            } else {
-                let currentDate = new Date();
-                res.render('index', {
-                    title: 'Public Surveys',
-                    page: 'survey/public-surveys',
-                    PublicSurveyList: publicSurveyList,
-                    displayName: req.user ? req.user.displayName : '',
-                    today: currentDate
-                });
-            }
+            let currentDate = new Date();
+            res.render('index', {
+                title: 'Public Surveys',
+                page: 'survey/public-surveys',
+                PublicSurveyList: publicSurveyList,
+                displayName: req.user ? req.user.displayName : '',
+                today: currentDate
+            });
         }
     });
 }
