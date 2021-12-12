@@ -80,6 +80,9 @@ body {
     box-sizing: border-box;
 }
 
+.mainTitles {
+    color: white;
+}
 
 /* Style inputs . 
   This css code is used for contact page form
