@@ -151,9 +151,6 @@ input[type="submit"]:hover {
     }
 }
 
-.navbar {
-    background-color: #040404 !important;
-}
 
 .navbar-brand {
     margin-left: 10px;
@@ -179,11 +176,11 @@ input[type="submit"]:hover {
 } */
 
 .container {
-    background-color: #040404 !important;
+    background-color: black !important;
 }
 
 .container-fluid {
-    background-color: #040404 !important;
+    background-color: black !important;
 }
 
 .fill {
